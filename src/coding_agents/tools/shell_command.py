@@ -1,4 +1,5 @@
 import subprocess
+from crewai.tools import BaseTool
 
 class ShellCommand(BaseTool):
     name: str = "Shell Command"

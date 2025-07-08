@@ -1,9 +1,8 @@
-from src.coding_agent.crew import create_coding_agent
+from agent import create_coding_agent
 from crewai import Task, Crew
 from termcolor import colored
 import cmd
 import os
-from typing import List
 
 APP_NAME = "parallel-coding"
 
