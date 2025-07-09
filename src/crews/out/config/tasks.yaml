@@ -1,0 +1,9 @@
+merge_pr:
+  description: >
+    
+  expected_output: >
+    
+  agent: git_manager
+  context: >
+
+  output_file:

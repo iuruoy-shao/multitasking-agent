@@ -1,7 +1,7 @@
 from crewai_tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type
-from git import Repo
+from src.crews.engineers.tools.git import Repo
 import os
 
 class CommitArgs(BaseModel):

@@ -1,0 +1,5 @@
+git_manager:
+  role: >
+  goal: >
+  backstory: >
+  llm: google/gemini-2.5-pro

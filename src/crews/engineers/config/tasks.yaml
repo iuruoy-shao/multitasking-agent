@@ -1,0 +1,29 @@
+read_system:
+  description: >
+    Read the user's current file system and identify the files relevant to {task} that need to be modified, returning their contents.
+  expected_output: >
+    - A schema of the file structure, with paths.
+    - The contents of the files that should be modified for {task}.
+  agent: engineer
+
+make_changes:
+  description: >
+
+  expected_output: >
+  context:
+    - read_system
+  agent: engineer
+
+create_branch:
+  description: >
+    Create a new branch in git for {task} and switch to it.
+  expected_output: >
+    - Confirmation of the new branch creation and switch or error.
+  agent: engineer
+
+commit_changes:
+  description: >
+    Commit changes onto the current branch.
+  expected_output: >
+    - Confirmation of the changes being committed or error.
+  agent: engineer
