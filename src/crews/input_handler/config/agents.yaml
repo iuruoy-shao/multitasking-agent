@@ -2,7 +2,7 @@ manager:
   role: > 
     Task Manager
   goal: > 
-    Here is the user input: {user_input}
+    Here is the user input: "{user_input}"
     
     Validate the user's input to ensure there are clear, executable tasks present.
     Interpret the user's input and identify tasks that should be completed.

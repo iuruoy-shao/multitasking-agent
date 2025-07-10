@@ -5,11 +5,16 @@ from crewai_tools import (
     DirectoryReadTool,
     FileReadTool,
 )
+from crewai.tasks.task_output import TaskOutput
 from pydantic import BaseModel
 from typing import List, Text
 
 class TaskList(BaseModel):
     items: List[Text]
+    
+def valid_input(output: TaskOutput) -> bool:
+    print(output.raw)
+    return output.raw
 
 @CrewBase
 class Manager():
@@ -32,6 +37,7 @@ class Manager():
     def validate_response(self) -> Task:
         return Task(
             config = self.tasks_config['validate_response'],
+            human_input = True
         )
     
     @task
@@ -39,6 +45,7 @@ class Manager():
         return Task(
             config = self.tasks_config['split_tasks'],
             output_pydantic = TaskList,
+            conditional = valid_input,
         )    
     
     @crew

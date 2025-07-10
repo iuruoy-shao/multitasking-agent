@@ -1,16 +1,23 @@
 validate_response:
   description: >
-    Validate the user's response to ensure there are clear, executable tasks present. 
+    Here is the user input: "{user_input}"
+    The directory for the codebase is: {dir}
+
+    Read the user's codebase file system and file contents to contextualize the user's request.
+    Validate the user's input to ensure there are clear, executable tasks present. 
     If there are no tasks requested, ask the user to clarify.
-    Read the user's current file system and file contents to contextualize the user's request.
-    Identify if there's anything the user is referring to that is needed to understand the request that cannot be found in the system that may need clarification.
-    If there are tasks requested, but they aren't sufficiently clear to be executed, ask for clarification specific to those statements.
+    
+    In order to be valid, tasks must:
+    - Require some sort of code editing. If the user is not requesting some engineer task (e.g. asking a question, discussing something unrelated), respond helpfully to the user's input and ask the user for a code-related request.
+    - Offer specific details. If any part of the request is unclear, ask for clarification.
+    - Be able to understood in relation to the codebase. If it's not clear how the request is related, ask for clarification.
   expected_output: >
-    - A boolean indicating whether clarification is needed.
+    - A boolean indicating whether the user's input contains valid tasks.
   agent: manager
 
 split_tasks:
   description: >
+    Here is the user input: "{user_input}"
     Split the user's input into a list of tasks that can be completed independently by separate engineers.
     Each task should be clear and executable, with no ambiguity.
   expected_output: >
