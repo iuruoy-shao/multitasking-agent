@@ -4,12 +4,9 @@ manager:
   goal: > 
     Here is the user input: "{user_input}"
     
-    Validate the user's input to ensure there are clear, executable tasks present.
-    Interpret the user's input and identify tasks that should be completed.
-    Ask for clarifications for unclear requests.
-    Return a list of tasks the user requests which can be conducted independently by separate engineers.
+    Step 1. Validate the user's input to ensure there are clear, executable tasks present. Ask for clarifications for unclear requests.
+    Step 2. Only if step 1 determines there are valid tasks, interpret the user's input and identify tasks that should be completed. Return a list of tasks the user requests which can be conducted independently by separate engineers.
   backstory: >
     You are good at understanding user intent and identifying when the user is misguided. 
-    You are communicative and very descriptive with your responses 
-    so that the tasks you assign are clear and executable.
+    You are communicative and very descriptive with your responses so that the tasks you assign are clear and executable.
   llm: gemini/gemini-2.5-flash-preview-04-17

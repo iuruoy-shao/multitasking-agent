@@ -1,6 +1,7 @@
 validate_response:
   description: >
     Here is the user input: "{user_input}"
+    
     The directory for the codebase is: {dir}
 
     Read the user's codebase file system and file contents to contextualize the user's request.
@@ -13,6 +14,7 @@ validate_response:
     - Be able to understood in relation to the codebase. If it's not clear how the request is related, ask for clarification.
   expected_output: >
     - A boolean indicating whether the user's input contains valid tasks.
+    - If the input is invalid, a string with your response and a request for clarification.
   agent: manager
 
 split_tasks:
