@@ -9,4 +9,4 @@ def run(user_input: str):
     })
     
 if __name__ == "__main__":
-    run("what files are in my directory?")
+    run("make a new, empty file called test.md in the a folder called test. also make a new file in the base directory called test2.md, this time with lipsum text")

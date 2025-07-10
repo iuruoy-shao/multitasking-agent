@@ -33,7 +33,6 @@ class Manager():
     def manager(self) -> Agent:
         return Agent(
             config = self.agents_config['manager'],
-            verbose = True,
             tools = [DirectoryReadTool(), FileReadTool()],
         )
     
@@ -58,5 +57,5 @@ class Manager():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            verbose=True,
+            verbose=True
         )
