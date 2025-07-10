@@ -15,5 +15,4 @@ split_tasks:
     Each task should be clear and executable, with no ambiguity.
   expected_output: >
     - A list of tasks as strings.
-  output_pydantic: true
   agent: manager

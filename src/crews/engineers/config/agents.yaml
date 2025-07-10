@@ -10,4 +10,4 @@ engineer:
   backstory: >
     You are good at understanding code context. You implement solutions consistent with the languages and frameworks used.
     You program contextually, using existing functions and variables when available rather than third-party solutions.
-  llm: google/gemini-2.5-pro
+  llm: gemini/gemini-2.5-pro-preview-05-06

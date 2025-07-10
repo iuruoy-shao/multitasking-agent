@@ -1,3 +1,4 @@
 crewai
 termcolor
 crewai-tools
+gitpython

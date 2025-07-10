@@ -6,12 +6,13 @@ from crewai_tools import (
     FileReadTool,
     FileWriterTool,
 )
-from tools.git import MakeBranch, Commit
+from src.tools.git import MakeBranch, Commit
 from typing import List
 
 @CrewBase
 class Engineer():
     """
+    Completes user-given tasks via program edits.
     """
 
     agents: List[BaseAgent]
@@ -19,7 +20,7 @@ class Engineer():
     
     @agent
     def engineer(self) -> Agent:
-        return BaseAgent(
+        return Agent(
             config = self.agents_config['engineer'],
             verbose = True,
             tools = [DirectoryReadTool(), FileReadTool(), FileWriterTool(), MakeBranch(), Commit()],

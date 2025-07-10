@@ -5,11 +5,16 @@ from crewai_tools import (
     DirectoryReadTool,
     FileReadTool,
 )
-from typing import List
+from pydantic import BaseModel
+from typing import List, Text
+
+class TaskList(BaseModel):
+    items: List[Text]
 
 @CrewBase
 class Manager():
     """
+    Handling user input via task delegation.
     """
     
     agents: List[BaseAgent]
@@ -17,7 +22,7 @@ class Manager():
     
     @agent
     def manager(self) -> Agent:
-        return BaseAgent(
+        return Agent(
             config = self.agents_config['manager'],
             verbose = True,
             tools = [DirectoryReadTool(), FileReadTool()],
@@ -33,6 +38,7 @@ class Manager():
     def split_tasks(self) -> Task:
         return Task(
             config = self.tasks_config['split_tasks'],
+            output_pydantic = TaskList,
         )    
     
     @crew

@@ -1,8 +1,7 @@
-from crewai_tools import BaseTool
+from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type
-from src.crews.engineers.tools.git import Repo
-import os
+from git import Repo
 
 class CommitArgs(BaseModel):
     commit_message: str = Field(..., description="The commit message. Should be short and descriptive of task completed.")

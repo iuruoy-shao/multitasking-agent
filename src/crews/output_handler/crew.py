@@ -6,6 +6,7 @@ from typing import List
 @CrewBase
 class GitManager():
     """
+    Reviews git branches and appropriately merges them.
     """
 
     agents: List[BaseAgent]
@@ -13,7 +14,7 @@ class GitManager():
     
     @agent
     def git_manager(self) -> Agent:
-        return BaseAgent(
+        return Agent(
             config = self.agents_config['git_manager'],
             verbose = True,
             # tools = ,
@@ -22,8 +23,7 @@ class GitManager():
     @task
     def merge_pr(self) -> Task:
         return Task(
-            config = self.tasks_config['merge_pr'],
-            context = [], # Assuming context is an empty list based on tasks.yaml
+            config = self.tasks_config['merge_pr'], 
         )
     
     @crew
