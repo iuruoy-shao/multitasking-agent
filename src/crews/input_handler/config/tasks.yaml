@@ -20,6 +20,9 @@ validate_response:
 split_tasks:
   description: >
     Here is the user input: "{user_input}"
+
+    The directory for the codebase is: {dir}
+
     Split the user's input into a list of tasks that can be completed independently by separate engineers.
     Each task should be clear and executable, with no ambiguity.
   expected_output: >

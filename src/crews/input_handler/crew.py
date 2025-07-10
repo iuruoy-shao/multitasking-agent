@@ -46,7 +46,7 @@ class Manager():
     
     @task
     def split_tasks(self) -> ConditionalTask:
-        return Task(
+        return ConditionalTask(
             config = self.tasks_config['split_tasks'],
             output_pydantic = TaskList,
             condition = valid_input,
