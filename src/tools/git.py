@@ -2,30 +2,28 @@ from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type
 from git import Repo
+from os import system
 
 class CommitArgs(BaseModel):
     commit_message: str = Field(..., description="The commit message. Should be short and descriptive of task completed.")
 
 class BranchArgs(BaseModel):
-    branch_name: str = Field(..., description="""The name of the branch to create or switch to. 
+    branch_name: str = Field(..., description="""The name of the worktree to create. 
                                                     Should describe the current task. 
                                                     No spaces, only dashes or underscores allowed. 
                                                     2-3 words ideal.""")
 
-class MakeBranch(BaseTool):
-    name: str = "Git Branch Tool"
-    description: str = "Checks out a new branch in the current git repository."
+class MakeWorktree(BaseTool):
+    name: str = "Git Worktree Tool"
+    description: str = "Creates a new worktree and branch in the repository."
     args: Type[BaseModel] = BranchArgs
 
     def _run(self, branch_name: str) -> str:
         try:
-            repo = Repo(search_parent_directories=True)
-            if branch_name in repo.branches:
-                return f"Branch '{branch_name}' already exists."
-            repo.git.checkout('-b', branch_name)
-            return f"Successfully created and switched to branch '{branch_name}'."
+            system(f"git worktree add --checkout '.temp/{branch_name}'")
+            return f"Successfully created and switched to worktree '{branch_name}'."
         except Exception as e:
-            return f"Error creating branch: {e}"
+            return f"Error creating worktree: {e}"
 
 class Commit(BaseTool):
     name: str = "Git Commit Tool"
@@ -34,7 +32,7 @@ class Commit(BaseTool):
 
     def _run(self, commit_message: str) -> str:
         try:
-            repo = Repo(search_parent_directories=True)
+            repo = Repo(search_parent_directories=True) # TODO: this probably causes problems
             if not repo.index.diff(None) and not repo.untracked_files:
                 return "No changes to commit."
             repo.git.add(A=True)

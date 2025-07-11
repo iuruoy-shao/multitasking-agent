@@ -16,14 +16,14 @@ make_changes:
 
 create_branch:
   description: >
-    Create a new branch in git for {task} and switch to it.
+    Create a new worktree (branch) in git for {task} and switch to it.
   expected_output: >
-    - Confirmation of the new branch creation and switch or error.
+    - Confirmation of the new worktree creation and switch or error.
   agent: engineer
 
 commit_changes:
   description: >
-    Commit changes onto the current branch.
+    Commit changes onto the current worktree.
   expected_output: >
     - Confirmation of the changes being committed or error.
   agent: engineer
