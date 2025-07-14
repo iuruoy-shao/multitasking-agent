@@ -16,7 +16,7 @@ class BranchArgs(BaseModel):
 
 class MakeWorktree(BaseTool):
     name: str = "Git Worktree Tool"
-    description: str = "Creates a new worktree and branch in the repository."
+    description: str = "Creates a new worktree and branch in the repository. The worktree directory will be created in '.temp/{branch_name}'."
     args: Type[BaseModel] = BranchArgs
 
     def _run(self, branch_name: str) -> str:
@@ -29,7 +29,7 @@ class MakeWorktree(BaseTool):
 
 class Commit(BaseTool):
     name: str = "Git Commit Tool"
-    description: str = "Commits changes onto the current branch."
+    description: str = "Adds all changes and commits them onto the current branch."
     args: Type[BaseModel] = CommitArgs
 
     def _run(self, commit_message: str) -> str:

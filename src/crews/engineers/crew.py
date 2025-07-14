@@ -7,7 +7,14 @@ from crewai_tools import (
     FileWriterTool,
 )
 from src.tools.git import MakeWorktree, Commit
-from typing import List
+from pydantic import BaseModel
+from typing import List, Text
+
+class EditOutput(BaseModel):
+    response: Text
+
+class GitOutput(BaseModel):
+    git_changes: Text
 
 @CrewBase
 class Engineer():

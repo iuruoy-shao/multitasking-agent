@@ -27,5 +27,5 @@ commit_changes:
   description: >
     Commit changes onto the current worktree.
   expected_output: >
-    - Confirmation of the changes being committed or error.
+    - A summary of the changes made in the commit.
   agent: engineer

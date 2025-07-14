@@ -57,5 +57,4 @@ class Manager():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            verbose=True
         )
