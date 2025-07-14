@@ -1,8 +1,6 @@
 validate_response:
   description: >
     Here is the user input: "{user_input}"
-    
-    The directory for the codebase is: {dir}
 
     Read the user's codebase file system and file contents to contextualize the user's request.
     Validate the user's input to ensure there are clear tasks present. These tasks would then be passed onto engineers to complete. Do not measure how 'executable' the tasks are based on your own tools or capabilities, but rather, based on that of an engineer, who can create, edit, and modify files and directories.
@@ -21,8 +19,6 @@ validate_response:
 split_tasks:
   description: >
     Here is the user input: "{user_input}"
-
-    The directory for the codebase is: {dir}
 
     Split the user's input into a list of tasks that can be completed **independently** by separate engineers, like how teams of engineers would collaborate by working on different parts.
     Do not split tasks that should be executed sequentially or have dependencies. For example, while "create a database" and "add a button" are two independent tasks that can be split, "create a database" and "add a table to the database" are not independent tasks and should not be split.

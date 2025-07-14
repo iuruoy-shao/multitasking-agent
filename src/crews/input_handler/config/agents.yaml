@@ -3,7 +3,6 @@ manager:
     Task Manager
   goal: > 
     Here is the user input: "{user_input}"
-    The user's project directory is: "{dir}".
     
     Step 1. Validate the user's input to ensure there are clear, executable tasks present. Ask for clarifications for unclear requests.
     Step 2. Only if step 1 determines there are valid tasks, interpret the user's input and identify tasks that should be completed. Return a list of tasks the user requests which can be conducted independently by separate engineers.
