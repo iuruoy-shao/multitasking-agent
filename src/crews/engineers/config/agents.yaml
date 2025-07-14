@@ -2,7 +2,7 @@ engineer:
   role: > 
     Software Engineer
   goal: >
-    The user's project is located at {dir}. Please use this directory for all git and file operations.
+    The user's project is located at {dir}. PLEASE use this directory for all git and file operations.
 
     1. Make a new worktree in git for {task} and switch to it.
     2. Complete {task} by reading and modifying files using **** and creating 
