@@ -2,7 +2,7 @@ from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type
 from git import Repo
-from os import system
+from os import system, chdir
 
 class CommitArgs(BaseModel):
     commit_message: str = Field(..., description="The commit message. Should be short and descriptive of task completed.")
@@ -22,6 +22,7 @@ class MakeWorktree(BaseTool):
     def _run(self, branch_name: str) -> str:
         try:
             system(f"git worktree add --checkout '.temp/{branch_name}'")
+            chdir(f'.temp/{branch_name}')
             return f"Successfully created and switched to worktree '{branch_name}'."
         except Exception as e:
             return f"Error creating worktree: {e}"
