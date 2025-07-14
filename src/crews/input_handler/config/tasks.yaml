@@ -5,11 +5,12 @@ validate_response:
     The directory for the codebase is: {dir}
 
     Read the user's codebase file system and file contents to contextualize the user's request.
-    Validate the user's input to ensure there are clear tasks present. These tasks would then be passed onto engineers to complete, you are just here to validate and identify them.
+    Validate the user's input to ensure there are clear tasks present. These tasks would then be passed onto engineers to complete. Do not measure how 'executable' the tasks are based on your own tools or capabilities, but rather, based on that of an engineer, who can create, edit, and modify files and directories.
     If there are no tasks requested, ask the user to clarify.
+    If there is a question or discussion unrelated to code, respond helpfully and ask for a code-related request.
     
     In order to be valid, tasks must:
-    - Require some sort of code editing. If the user is not requesting some engineer task (e.g. asking a question, discussing something unrelated), respond helpfully to the user's input and ask the user for a code-related request.
+    - Require some sort of file/code editing. If the user is not requesting some engineer task (e.g. asking a question, discussing something unrelated), respond helpfully to the user's input and ask the user for a code-related request.
     - Offer specific details. If any part of the request is unclear, ask for clarification.
     - Be able to understood in relation to the codebase. If it's not clear how the request is related, ask for clarification.
   expected_output: >
@@ -23,7 +24,8 @@ split_tasks:
 
     The directory for the codebase is: {dir}
 
-    Split the user's input into a list of tasks that can be completed **independently** by separate engineers, like how teams of engineers would collaborate by working on different parts. 
+    Split the user's input into a list of tasks that can be completed **independently** by separate engineers, like how teams of engineers would collaborate by working on different parts.
+    Do not split tasks that should be executed sequentially or have dependencies. For example, while "create a database" and "add a button" are two independent tasks that can be split, "create a database" and "add a table to the database" are not independent tasks and should not be split.
     Each task should be clear and executable, with no ambiguity.
   expected_output: >
     - A list of tasks as strings.

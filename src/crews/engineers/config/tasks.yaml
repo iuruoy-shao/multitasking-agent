@@ -8,8 +8,10 @@ read_system:
 
 make_changes:
   description: >
-
+    Think about steps required to complete {task}.
+    Edit user files to complete {task}.
   expected_output: >
+    - Summary of changes made to files.
   context:
     - read_system
   agent: engineer
