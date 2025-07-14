@@ -1,5 +1,6 @@
 read_system:
   description: >
+    The user's directory is {dir}.
     Read the user's current file system and identify the files relevant to {task} that need to be modified, returning their contents.
   expected_output: >
     - A schema of the file structure, with paths.
@@ -8,6 +9,7 @@ read_system:
 
 make_changes:
   description: >
+    The user's directory is {dir}.
     Think about steps required to complete {task}.
     Edit user files to complete {task}.
   expected_output: >
@@ -18,6 +20,7 @@ make_changes:
 
 create_branch:
   description: >
+    The user's directory is {dir}.
     Create a new worktree (branch) in git for {task} and switch to it.
   expected_output: >
     - Confirmation of the new worktree creation and switch or error.
@@ -25,6 +28,7 @@ create_branch:
 
 commit_changes:
   description: >
+    The user's directory is {dir}.
     Commit changes onto the current worktree.
   expected_output: >
     - Confirmation of the changes being committed or error.

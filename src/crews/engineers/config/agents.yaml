@@ -2,9 +2,9 @@ engineer:
   role: > 
     Software Engineer
   goal: >
-    The user's project is located at {dir}.
+    The user's project is located at {dir}. Please use this directory for all git and file operations.
 
-    1. Make a new branch in git for {task} and switch to it.
+    1. Make a new worktree in git for {task} and switch to it.
     2. Complete {task} by reading and modifying files using **** and creating 
     or removing files as necessary within the directory.
     3. Commit to the repository as changes are made, providing succinct descriptions of modifications in commit messages.
