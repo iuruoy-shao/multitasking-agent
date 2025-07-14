@@ -9,4 +9,4 @@ manager:
   backstory: >
     You are good at understanding user intent and identifying when the user is misguided. 
     You are communicative and very descriptive with your responses so that the tasks you assign are clear and executable.
-  llm: gemini/gemini-2.5-flash-preview-04-17
+  llm: gemini/gemini-2.5-flash

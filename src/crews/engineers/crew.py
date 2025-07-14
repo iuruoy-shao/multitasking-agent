@@ -32,31 +32,11 @@ class Engineer():
             verbose = True,
             tools = [DirectoryReadTool(), FileReadTool(), FileWriterTool(), MakeWorktree(), Commit()],
         )
-        
-    @task
-    def read_system(self) -> Task:
-        return Task(
-            config = self.tasks_config['read_system'],
-            async_execution = True,
-        )
 
     @task
     def make_changes(self) -> Task:
         return Task(
             config = self.tasks_config['make_changes'],
-            context = [self.read_system()],
-        )
-
-    @task
-    def create_branch(self) -> Task:
-        return Task(
-            config = self.tasks_config['create_branch'],
-        )
-
-    @task
-    def commit_changes(self) -> Task:
-        return Task(
-            config = self.tasks_config['commit_changes'],
         )
         
     @crew

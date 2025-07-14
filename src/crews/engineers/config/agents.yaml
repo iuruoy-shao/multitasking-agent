@@ -8,4 +8,4 @@ engineer:
   backstory: >
     You are good at understanding code context. You implement solutions consistent with the languages and frameworks used.
     You program contextually, using existing functions and variables when available rather than third-party solutions. You only work on one branch.
-  llm: gemini/gemini-2.5-flash-preview-04-17
+  llm: gemini/gemini-2.5-flash
