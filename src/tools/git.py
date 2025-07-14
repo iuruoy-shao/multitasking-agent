@@ -8,10 +8,11 @@ class CommitArgs(BaseModel):
     commit_message: str = Field(..., description="The commit message. Should be short and descriptive of task completed.")
 
 class BranchArgs(BaseModel):
-    branch_name: str = Field(..., description="""The name of the worktree to create. 
-                                                    Should describe the current task. 
-                                                    No spaces, only dashes or underscores allowed. 
-                                                    2-3 words ideal.""")
+    branch_name: str = Field(..., 
+                             description="""The name of the worktree to create. 
+                             Should describe the current task. 
+                             No spaces, only dashes or underscores allowed. 
+                             2-3 words ideal.""")
 
 class MakeWorktree(BaseTool):
     name: str = "Git Worktree Tool"

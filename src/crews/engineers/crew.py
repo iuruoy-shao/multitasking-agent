@@ -6,7 +6,7 @@ from crewai_tools import (
     FileReadTool,
     FileWriterTool,
 )
-from src.tools.git import MakeBranch, Commit
+from src.tools.git import MakeWorktree, Commit
 from typing import List
 
 @CrewBase
@@ -23,7 +23,7 @@ class Engineer():
         return Agent(
             config = self.agents_config['engineer'],
             verbose = True,
-            tools = [DirectoryReadTool(), FileReadTool(), FileWriterTool(), MakeBranch(), Commit()],
+            tools = [DirectoryReadTool(), FileReadTool(), FileWriterTool(), MakeWorktree(), Commit()],
         )
         
     @task

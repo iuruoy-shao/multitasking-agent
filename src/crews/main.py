@@ -1,22 +1,22 @@
 from engineers.crew import Engineer
-from input_handler.crew import Manager
+from input_handler.crew import Manager, TaskList
 from output_handler.crew import GitManager
+import asyncio
 
-def run(user_input: str):
+async def run(user_input: str):
     output = Manager().crew().kickoff(inputs={
         'user_input': user_input,
-        'dir': '/Users/Yourui/Documents/Caltech'
+        'dir': '/Users/Yourui/Documents/test'
     }).pydantic
     
-    if output.valid:
-        Engineer.crew().kickoff_for_each_async({
+    if isinstance(output, TaskList): # If task splitting was completed, i.e., the user input was valid.
+        await Engineer().crew().kickoff_for_each_async([{
             'task': task
-        } for task in output.tasks)
+        } for task in output.tasks])
     else:
         return output.response
     
     # kickoff_for_each_async()
     
 if __name__ == "__main__":
-    run("""make a new, empty file called test.md in the a folder called test. 
-        also make a new file in the base directory called test2.md, this time with lipsum text""")
+    asyncio.run(run("make a new, empty file called test.md in a folder called 'hello_world'"))
