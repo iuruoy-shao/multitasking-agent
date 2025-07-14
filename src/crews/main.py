@@ -4,14 +4,17 @@ from output_handler.crew import GitManager
 import asyncio
 
 async def run(user_input: str):
+    directory = '/Users/Yourui/Documents/test'
+    
     output = Manager().crew().kickoff(inputs={
         'user_input': user_input,
-        'dir': '/Users/Yourui/Documents/test'
+        'dir': directory
     }).pydantic
     
     if isinstance(output, TaskList): # If task splitting was completed, i.e., the user input was valid.
         await Engineer().crew().kickoff_for_each_async([{
-            'task': task
+            'task': task,
+            'dir': directory
         } for task in output.tasks])
     else:
         return output.response

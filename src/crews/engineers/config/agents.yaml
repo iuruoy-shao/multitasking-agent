@@ -2,6 +2,8 @@ engineer:
   role: > 
     Software Engineer
   goal: >
+    The user's project is located at {dir}.
+
     1. Make a new branch in git for {task} and switch to it.
     2. Complete {task} by reading and modifying files using **** and creating 
     or removing files as necessary within the directory.
