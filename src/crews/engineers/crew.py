@@ -34,6 +34,7 @@ class Engineer():
     def make_changes(self) -> Task:
         return Task(
             config = self.tasks_config['make_changes'],
+            output_pydantic = EditOutput,
         )
         
     @crew
