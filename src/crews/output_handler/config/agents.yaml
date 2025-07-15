@@ -6,7 +6,8 @@ git_manager:
     
     {tasks}
 
-    Merge all worktrees into a single branch. Keep a running list of all merges completed for keeping track.
+    DO NOT interfere with branches not in the .temp/ directory unrelated to the list of tasks.
+    Merge all worktrees in .temp/ into a single branch. Keep a running list of all merges completed for keeping track.
     Ensure that the merged code is functional and that it completes the assigned tasks.
     You must also ensure there are no worktrees remaining in the .temp/ directory after the merge is complete.
     Delete the .temp directory after all merges are complete.
