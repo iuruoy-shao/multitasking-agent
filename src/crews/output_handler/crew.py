@@ -6,22 +6,22 @@ from crewai_tools import (
     FileReadTool,
     FileWriterTool,
 )
-from tools.manage_git import Commit, Command, Merge
+from src.tools.manage_git import Commit, Command, Merge
 from pydantic import BaseModel
 from typing import List
-
-class Merges(BaseModel):
-    merges: List[Merge]
-
-class Merge(BaseModel):
-    source_branch: str
-    target_branch: str
-    conflicts: List[Conflict]
 
 class Conflict(BaseModel):
     source_version: str
     target_version: str
     merged_version: str
+
+class MergeInfo(BaseModel):
+    source_branch: str
+    target_branch: str
+    conflicts: List[Conflict]
+
+class Merges(BaseModel):
+    merges: List[MergeInfo]
 
 @CrewBase
 class GitManager():
