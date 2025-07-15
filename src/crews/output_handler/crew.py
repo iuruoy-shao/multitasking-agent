@@ -1,7 +1,27 @@
 from crewai import Agent, Task, Crew, Process
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai_tools import (
+    DirectoryReadTool,
+    FileReadTool,
+    FileWriterTool,
+)
+from tools.manage_git import Commit, Command, Merge
+from pydantic import BaseModel
 from typing import List
+
+class Merges(BaseModel):
+    merges: List[Merge]
+
+class Merge(BaseModel):
+    source_branch: str
+    target_branch: str
+    conflicts: List[Conflict]
+
+class Conflict(BaseModel):
+    source_version: str
+    target_version: str
+    merged_version: str
 
 @CrewBase
 class GitManager():
@@ -16,14 +36,14 @@ class GitManager():
     def git_manager(self) -> Agent:
         return Agent(
             config = self.agents_config['git_manager'],
-            verbose = True,
-            # tools = ,
+            tools = [DirectoryReadTool(), FileReadTool(), FileWriterTool(), Commit(), Command(), Merge()],
         )
     
     @task
-    def merge_pr(self) -> Task:
+    def merge_changes(self) -> Task:
         return Task(
-            config = self.tasks_config['merge_pr'], 
+            config = self.tasks_config['merge_changes'],
+            output_pydantic = Merges,
         )
     
     @crew

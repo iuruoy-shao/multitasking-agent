@@ -1,5 +1,10 @@
 git_manager:
   role: >
+    Given the list of tasks below, each of which was completed on a different git worktree:
+    
+    {tasks}
+
+    
   goal: >
   backstory: >
   llm: gemini/gemini-2.5-flash
