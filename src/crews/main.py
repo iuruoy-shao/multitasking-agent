@@ -31,13 +31,14 @@ async def run(user_input: str):
     for process in processes:
         process.start()
 
-    summaries = [queue.get() for _ in processes]
+    summaries = [queue.get().pydantic.response for _ in processes]
 
     for process in processes:
         process.join()
 
-    for summary in summaries:
-        print(summary)
+    merge = GitManager().crew().kickoff(inputs={
+        'tasks': summaries,
+    }).pydantic.merges
     
 if __name__ == "__main__":
     asyncio.run(run("make a new, empty file called test.md in a folder called 'hello_world'. Create a second file called 'test2.md' in the root, and write 'hello world' in it."))
