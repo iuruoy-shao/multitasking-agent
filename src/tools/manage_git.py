@@ -1,6 +1,6 @@
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
-from typing import Type
+from typing import Type, List
 from git import Repo
 from os import system, chdir
 import subprocess
@@ -16,7 +16,7 @@ class BranchArgs(BaseModel):
                              2-3 words ideal.""")
     
 class CommandArgs(BaseModel):
-    command: str = Field(..., description="The command to execute in the shell. Should be a valid shell command.")
+    command: List[str] = Field(..., description="The command to execute in the shell. This should be formatted as a list of strings, where each 'term' in the command is its own element, as commands are fed into subprocess.run(). For example, ['git', 'status'] in place of 'git status'.")
 
 class MergeArgs(BaseModel):
     target_branch: str = Field(..., description="The name of the branch to merge into, corresponding to the contents of the folder with the same name in the .temp directory.")
@@ -53,15 +53,15 @@ class Commit(BaseTool):
         
 class Command(BaseTool):
     name: str = "Execute Command Tool"
-    description: str = "Directly runs the given command in the shell. Can be used to check repository information, such as git status."
+    description: str = "Directly runs the given command, separated into a list of strings, in the shell. Can be used to check repository information, such as git status."
     args: Type[BaseModel] = CommandArgs
 
-    def _run(self, command: str) -> str:
+    def _run(self, command: List[str]) -> str:
         try:
             result = subprocess.run(command, capture_output=True)
-            output = result.stdout
+            output = result.stdout.decode()
             if result.stderr:
-                output += f"\nSTDERR:\n{result.stderr}"
+                output += f"\nSTDERR:\n{result.stderr.decode()}"
             return output
         except Exception as e:
             return f"Error executing command: {e}"

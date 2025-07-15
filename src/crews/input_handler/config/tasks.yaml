@@ -1,6 +1,7 @@
 validate_response:
   description: >
     Here is the user input: "{user_input}"
+    Assume all requests are made relative to the current directory.
 
     Read the user's codebase file system and file contents to contextualize the user's request.
     Validate the user's input to ensure there are clear tasks present. These tasks would then be passed onto engineers to complete. Do not measure how 'executable' the tasks are based on your own tools or capabilities, but rather, based on that of an engineer, who can create, edit, and modify files and directories.
