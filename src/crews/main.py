@@ -38,6 +38,7 @@ async def run(user_input: str):
 
     merge = GitManager().crew().kickoff(inputs={
         'tasks': summaries,
+        'worktrees': os.listdir('.temp'),
     }).pydantic.merges
     
 if __name__ == "__main__":
