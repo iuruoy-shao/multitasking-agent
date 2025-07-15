@@ -1,8 +1,8 @@
 make_changes:
   name: "Make changes"
   description: >
-    Think about steps required to complete {task}.
-    Edit user files to complete {task}.
+    Think about steps required to complete your assigned task: {task}.
+    Edit user files to according to the steps identified to complete the assigned task.
   expected_output: >
-    - Summary of changes made to files.
+    - Summary of all changes made to files in order to complete the assigned task.
   agent: engineer
