@@ -2,14 +2,14 @@ from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type, List
 from termcolor import cprint
-import subprocess
+from subprocess import run
 import os
 
 class CommandArgs(BaseModel):
-    command: List[str] = Field(..., description="The command to execute in the shell. This should be formatted as a list of strings, where each 'term' in the command is its own element, as commands are fed into subprocess.run(). For example, ['git', 'status'] in place of 'git status'.")
+    command: List[str] = Field(description="The command to execute in the shell. This should be formatted as a list of strings, where each 'term' in the command is its own element, as commands are fed into subprocess.run(). For example, ['git', 'status'] in place of 'git status'.")
     
 class DirectoryArgs(BaseModel):
-    directory: str = Field(..., description="The directory to read. Should be a valid path relative to the current working directory.")
+    directory: str = Field(description="The directory to read. Should be a valid path relative to the current working directory.")
 
 class Command(BaseTool):
     name: str = "Execute Command Tool"
@@ -17,9 +17,9 @@ class Command(BaseTool):
     args: Type[BaseModel] = CommandArgs
 
     def _run(self, command: List[str]) -> str:
-        cprint(f"▶︎ Running command: {' '.join(command)}", 'yellow')
+        cprint(f"▶︎ Running command: {' '.join(command)}", 'magenta')
         try:
-            result = subprocess.run(command, capture_output=True)
+            result = run(command, capture_output=True)
             output = result.stdout.decode()
             if result.stderr:
                 output += f"\nSTDERR:\n{result.stderr.decode()}"
@@ -35,7 +35,7 @@ class DirectoryReadTool(BaseTool):
     args: Type[BaseModel] = DirectoryArgs
 
     def _run(self, directory: str) -> str:
-        cprint(f"▶︎ Reading Directory: {directory}", 'yellow')
+        cprint(f"▶︎ Reading Directory: {directory}", 'magenta')
         try:
             cprint("    ↳ Directories read", 'green')
             return os.listdir(directory)

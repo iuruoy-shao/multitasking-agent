@@ -56,4 +56,4 @@ def run(user_input: str, directory: str):
     }).pydantic.merges
 
     for merge in merges:
-        cprint(f"    ↳ Merged: '{merge.source_branch}' into '{merge.target_branch}'. {len(merge.conflicts)} resolved.", 'grey')
+        cprint(f"    ↳ Merged: '{merge.source_branch}' into '{merge.target_branch}'. {len(merge.conflicts)} conflicts resolved.", 'grey')
