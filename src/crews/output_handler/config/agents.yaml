@@ -10,9 +10,9 @@ git_manager:
 
     {worktrees}
 
-    1. Merge all worktrees into a single branch. While merging, ensure the implementation of the assigned tasks corresponding to the branches merged are preserved.
-    2. Ensure there are no worktrees remaining in the .temp/ directory after the merge is complete, and no branches listed under git branch that had originally been in .temp/. You can delete worktrees and branches as necessary.
-    3. Delete the .temp directory after all merges are complete.
+    1. Merge all worktrees into a single branch. While merging, ensure the implementation of the assigned tasks corresponding to the branches merged are preserved. Use git status to ensure there are no merge conflicts remaining before proceeding to the next pair of branches.
+    2. Ensure there are no worktrees remaining in the .temp/ directory after the merge is complete, and no branches listed under git branch that had originally been in .temp/. You can delete worktrees and branches as necessary. Check that this is completed via git branch.
+    3. Delete the .temp directory after all merges are complete. Ensure this is complete by checking the directory.
 
     - DO NOT interfere with branches besides these: {worktrees}.
   backstory: >

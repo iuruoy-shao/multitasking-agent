@@ -3,20 +3,26 @@ from input_handler.crew import Manager, ValidationOutput
 from output_handler.crew import GitManager
 from multiprocessing import Process, Queue
 import git
-import asyncio
 import os
 
 def launch_engineer(task: str, queue: Queue):
     summary = Engineer().crew().kickoff(inputs={'task': task})
     queue.put(summary)
 
-async def run(user_input: str):
+def run(user_input: str):
     directory = '/Users/Yourui/Documents/test'
-    os.chdir(directory) # ensure repository is initialized
+    os.chdir(directory)
+    
+    # ensure repository is initialized
     if not os.path.exists(f'{directory}/.git'):
         repo = git.Repo.init(directory)
         repo.git.add(A=True)
         repo.index.commit('Initial commit')
+        
+    # add / modify .gitignore
+    with open(f'{directory}/.gitignore', 'a') as f:
+        f.write('\n# Ignore temporary worktrees\n')
+        f.write('.temp/\n')
 
     output = Manager().crew().kickoff(inputs={
         'user_input': user_input,
@@ -42,4 +48,4 @@ async def run(user_input: str):
     }).pydantic.merges
     
 if __name__ == "__main__":
-    asyncio.run(run("make a new, empty file called test.md in a folder called 'hello_world'. Create a second file called 'test2.md' in the root, and write 'hello world' in it."))
+    run("add some lipsum to the beginning of test.txt. also add some lipsum to the end of test.txt")

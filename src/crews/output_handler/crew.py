@@ -2,11 +2,11 @@ from crewai import Agent, Task, Crew, Process
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai_tools import (
-    DirectoryReadTool,
     FileReadTool,
     FileWriterTool,
 )
-from src.tools.manage_git import Commit, Command, Merge
+from src.tools.manage_git import Commit, Merge
+from src.tools.system_tools import Command, DirectoryReadTool
 from pydantic import BaseModel
 from typing import List
 

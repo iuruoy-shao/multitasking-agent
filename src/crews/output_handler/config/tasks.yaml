@@ -1,11 +1,13 @@
 merge_changes:
   description: >
     Merge all worktrees located in .temp/ ({worktrees}), but do so a pair at a time, as such:
-      1. To merge changes from one branch into another, use the merge tool to begin the merge process. If there are merge conflicts, edit the files with git conflicts to (1) remove any conflicts while also (2) preserving the intended changes, ensuring the code is functional, and that the merged code completes the assigned tasks {tasks}. 
+      1. To merge changes from one branch into another, use the merge tool to begin the merge process. If there are merge conflicts, YOU MUST EDIT THE FILES with git conflicts to (1) remove any conflicts while also (2) preserving the intended changes, ensuring the code is functional, and that the merged code completes the assigned tasks {tasks}. 
       2. Then, commit the changes using the commit tool.
       3. After a branch is fully merged and there are no conflicts, delete the worktree using git worktree remove. 
       4. Then, delete the branch using git branch -d.
+      5. You MUST ensure that there are no merge conflicts before proceeding to the next pair of branches. Do so by executing git status.
     Repeat this until there are no more worktrees in .temp/ and no branches listed under git branch that had originally been in .temp/.
+    You MUST check that there are no worktrees and branches from {worktrees} left via git branch.
   expected_output: >
     - A list of merges completed, where the following information for each merge is provided: The source branch, target, branch, and any merge conflicts resolved. Merge conflict summaries should contain the following information: (1) the initial version from the target branch, (2) the version from the source branch, and (3) the final merged version.
   agent: git_manager
