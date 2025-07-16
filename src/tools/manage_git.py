@@ -1,6 +1,6 @@
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
-from typing import Type, List
+from typing import Type
 from git import Repo
 from os import system, chdir
 import subprocess
@@ -14,9 +14,6 @@ class BranchArgs(BaseModel):
                              Should describe the current task. 
                              No spaces, only dashes or underscores allowed. 
                              2-3 words ideal.""")
-    
-class CommandArgs(BaseModel):
-    command: List[str] = Field(..., description="The command to execute in the shell. This should be formatted as a list of strings, where each 'term' in the command is its own element, as commands are fed into subprocess.run(). For example, ['git', 'status'] in place of 'git status'.")
 
 class MergeArgs(BaseModel):
     target_branch: str = Field(..., description="The name of the branch to merge into, corresponding to the contents of the folder with the same name in the .temp directory.")
@@ -50,21 +47,6 @@ class Commit(BaseTool):
             return f"Successfully committed to branch '{repo.active_branch.name}' with message: '{commit_message}'"
         except Exception as e:
             return f"Error making git commit: {e}"
-        
-class Command(BaseTool):
-    name: str = "Execute Command Tool"
-    description: str = "Directly runs the given command, separated into a list of strings, in the shell. Can be used to check repository information, such as git status."
-    args: Type[BaseModel] = CommandArgs
-
-    def _run(self, command: List[str]) -> str:
-        try:
-            result = subprocess.run(command, capture_output=True)
-            output = result.stdout.decode()
-            if result.stderr:
-                output += f"\nSTDERR:\n{result.stderr.decode()}"
-            return output
-        except Exception as e:
-            return f"Error executing command: {e}"
         
 class Merge(BaseTool):
     name: str = "Git Merge Tool"
