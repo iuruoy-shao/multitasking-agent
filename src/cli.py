@@ -1,4 +1,4 @@
-from agent import create_coding_agent
+from main import run
 from crewai import Task, Crew
 from termcolor import colored
 import cmd
@@ -11,26 +11,21 @@ class CLI(cmd.Cmd):
     
     def __init__(self):
         super().__init__()
-        self.set_directory = False
-        self.current_directory = os.getcwd()
-        self.agent = create_coding_agent()
-        self.crew = Crew(
-            agents=[self.agent],
-            tasks=[],
-            verbose=True
-        )
+        self.current_directory = None
             
     def do_setdir(self, arg):
-        new_dir = os.path.join(self.current_directory, arg)
-        if os.path.exists(new_dir) and os.path.isdir(new_dir):
-            self.current_directory = new_dir
+        if os.path.exists(arg) and os.path.isdir(arg):
+            self.current_directory = arg
             print(f"Current directory changed to {self.current_directory}")
         else:
             print(f"Directory '{arg}' does not exist.")
     
-    def do_edit(self, arg):
+    def do_hey(self, arg):
         """Receive prompt"""
-        print('prompt:', arg)
+        if not self.current_directory:
+            print("Please set the working directory first using 'setdir <path>'")
+            return
+        run(arg, self.current_directory)
     
     def do_quit(self, arg):
         """Exit the CLI."""
@@ -39,25 +34,6 @@ class CLI(cmd.Cmd):
 
     def do_exit(self, arg):
         return self.do_quit(arg)
-    
-    def do_hey(self, input):
-        if not input:
-            print("Please provide a prompt.")
-            return
-            
-        print(colored(f"Working on: {input}", 'blue'))
-        
-        task = Task(
-            description=input,
-            agent=self.agent,
-            context=f"Current directory: {self.current_directory}"
-        )
-        
-        self.crew.tasks = [task]
-        result = self.crew.kickoff()
-        
-        print(colored("Response:", 'green', attrs=['bold']))
-        print(result)
 
 if __name__ == "__main__":
     CLI().cmdloop()

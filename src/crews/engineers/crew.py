@@ -26,7 +26,6 @@ class Engineer():
     def engineer(self) -> Agent:
         return Agent(
             config = self.agents_config['engineer'],
-            verbose = True,
             tools = [DirectoryReadTool(), FileReadTool(), FileWriterTool(), MakeWorktree(), Commit()],
         )
 
@@ -43,5 +42,4 @@ class Engineer():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            verbose=True,
         )

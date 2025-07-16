@@ -1,6 +1,7 @@
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 from typing import Type, List
+from termcolor import cprint
 import subprocess
 import os
 
@@ -16,13 +17,16 @@ class Command(BaseTool):
     args: Type[BaseModel] = CommandArgs
 
     def _run(self, command: List[str]) -> str:
+        cprint(f"▶︎ Running command: {' '.join(command)}", 'yellow')
         try:
             result = subprocess.run(command, capture_output=True)
             output = result.stdout.decode()
             if result.stderr:
                 output += f"\nSTDERR:\n{result.stderr.decode()}"
+            cprint(f"    ↳ Result: {output.replace('\n', ' ')[:50]}...", 'green')
             return output
         except Exception as e:
+            cprint("    ↳ Execution failed", 'red')
             return f"Error executing command: {e}"
         
 class DirectoryReadTool(BaseTool):
@@ -31,7 +35,10 @@ class DirectoryReadTool(BaseTool):
     args: Type[BaseModel] = DirectoryArgs
 
     def _run(self, directory: str) -> str:
+        cprint(f"▶︎ Reading Directory: {directory}", 'yellow')
         try:
+            cprint("    ↳ Directories read", 'green')
             return os.listdir(directory)
         except Exception as e:
+            cprint("    ↳ Execution failed", 'red')
             return f"Error reading directory: {e}"

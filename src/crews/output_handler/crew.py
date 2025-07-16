@@ -52,5 +52,4 @@ class GitManager():
         return Crew(
             agents=self.agents,
             tasks=self.tasks,
-            verbose=True,
         )

@@ -14,7 +14,7 @@ validate_response:
     - Be able to understood in relation to the codebase. If it's not clear how the request is related, ask for clarification.
   expected_output: >
     - A boolean indicating whether the user's input contains valid tasks.
-    - If the input is invalid, a string with your response and a request for clarification.
+    - If the input is invalid, a string with your response and a request for clarification. This will be shown to the user, so keep it clear without reference to internal instructions (e.g. "my job is to..."). IMPORTANT: If the user is asking a question about the system (e.g. the files within it or frameworks or language used), respond helpfully and follow up with a request for any tasks.
   agent: manager
 
 split_tasks:
