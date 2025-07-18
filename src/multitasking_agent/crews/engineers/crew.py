@@ -5,8 +5,8 @@ from crewai_tools import (
     FileReadTool,
     FileWriterTool,
 )
-from src.tools.manage_git import MakeWorktree, Commit
-from src.tools.system_tools import DirectoryReadTool
+from multitasking_agent.tools.manage_git import MakeWorktree, Commit
+from multitasking_agent.tools.system_tools import DirectoryReadTool
 from pydantic import BaseModel
 from typing import List, Text
 

@@ -1,6 +1,6 @@
-from crews.engineers.crew import Engineer
-from crews.input_handler.crew import Manager, ValidationOutput
-from crews.output_handler.crew import GitManager
+from multitasking_agent.crews.engineers.crew import Engineer
+from multitasking_agent.crews.input_handler.crew import Manager, ValidationOutput
+from multitasking_agent.crews.output_handler.crew import GitManager
 from multiprocessing import Process, Queue
 from termcolor import cprint
 import git
@@ -34,7 +34,6 @@ def run(user_input: str, directory: str):
     cprint("✓ Validated user input", 'green')
     if isinstance(output, ValidationOutput):
         cprint(f"    ↳ {output.response}", 'grey')
-        os.rmdir('.temp') # clean up
         return
 
     cprint("✓ Parsed tasks", 'green')

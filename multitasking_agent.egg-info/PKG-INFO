@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: multitasking_agent
+Version: 0.1.0
+Summary: A CLI coding AI agent capable of developing features in parallel.
+Author-email: Yourui Shao <youruishao115022@gmail.com>
+Requires-Python: <3.14,>=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: crewai
+Requires-Dist: crewai-tools
+Requires-Dist: termcolor
+Requires-Dist: gitpython
+
+# parallel-coding
+
+This project provides an interactive CLI tool for software engineering tasks, capable of executing multiple tasks in parallel.
+
+## Install Dependencies
+```bash
+pip install -r requirements.txt
+```

@@ -1,0 +1,24 @@
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multitasking_agent"
+version = "0.1.0"
+description = "A CLI coding AI agent capable of developing features in parallel."
+readme = "README.md"
+authors = [
+  { name = "Yourui Shao", email = "youruishao115022@gmail.com" },
+]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai",
+    "crewai-tools",
+    "termcolor",
+    "gitpython",
+]
+
+[project.scripts]
+"agent" = "multitasking_agent.cli:main"
+
+[tool.setuptools]
+packages = ["src"]
