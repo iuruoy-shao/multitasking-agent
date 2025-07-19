@@ -1,0 +1,14 @@
+# development
+.env
+.venv
+.github
+__pycache__
+.vscode
+AGENTS.md
+
+# MacOS
+.DS_Store
+
+# while running
+*.egg-info
+.temp/
