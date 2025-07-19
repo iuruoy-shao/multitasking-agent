@@ -1,4 +1,4 @@
-from multitasking_agent.main import run
+from src.main import run
 import argparse
 import sys
 import os

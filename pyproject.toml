@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-"agent" = "multitasking_agent.cli:main"
+"agent" = "src.cli:main"
 
 [tool.setuptools]
 packages = ["src"]

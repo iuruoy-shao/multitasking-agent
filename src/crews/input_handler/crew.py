@@ -2,7 +2,7 @@ from crewai import Agent, Task, Crew
 from crewai.project import CrewBase, agent, crew, task
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from crewai_tools import FileReadTool
-from multitasking_agent.tools.system_tools import DirectoryReadTool
+from src.tools.system_tools import DirectoryReadTool
 from crewai.tasks.conditional_task import ConditionalTask
 from crewai.tasks.task_output import TaskOutput
 from pydantic import BaseModel

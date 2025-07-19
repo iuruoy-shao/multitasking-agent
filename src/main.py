@@ -1,6 +1,6 @@
-from multitasking_agent.crews.engineers.crew import Engineer
-from multitasking_agent.crews.input_handler.crew import Manager, ValidationOutput
-from multitasking_agent.crews.output_handler.crew import GitManager
+from src.crews.engineers.crew import Engineer
+from src.crews.input_handler.crew import Manager, ValidationOutput
+from src.crews.output_handler.crew import GitManager
 from multiprocessing import Process, Queue
 from termcolor import cprint
 import git

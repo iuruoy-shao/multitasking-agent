@@ -1,8 +1,0 @@
-README.md
-pyproject.toml
-multitasking_agent.egg-info/PKG-INFO
-multitasking_agent.egg-info/SOURCES.txt
-multitasking_agent.egg-info/dependency_links.txt
-multitasking_agent.egg-info/entry_points.txt
-multitasking_agent.egg-info/requires.txt
-multitasking_agent.egg-info/top_level.txt

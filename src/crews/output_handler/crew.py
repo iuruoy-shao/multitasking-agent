@@ -5,8 +5,8 @@ from crewai_tools import (
     FileReadTool,
     FileWriterTool,
 )
-from multitasking_agent.tools.manage_git import Commit, Merge
-from multitasking_agent.tools.system_tools import Command, DirectoryReadTool
+from src.tools.manage_git import Commit, Merge
+from src.tools.system_tools import Command, DirectoryReadTool
 from pydantic import BaseModel
 from typing import List
 
