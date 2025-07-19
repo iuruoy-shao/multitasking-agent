@@ -12,3 +12,4 @@ AGENTS.md
 # while running
 *.egg-info
 .temp/
+build/
