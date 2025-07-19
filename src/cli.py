@@ -35,7 +35,6 @@ def main():
 
     try:
         run(args.prompt, path)
-        print("\nAgent finished its task. Check the project directory!")
     except Exception as e:
         print(f"An error occurred during agent execution: {e}", file=sys.stderr)
         sys.exit(1)
